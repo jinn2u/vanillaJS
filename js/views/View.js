@@ -8,4 +8,11 @@ export default class View{
 
     return this
   }
+  hide(){
+    this.element.style.display = "none"
+    return this
+  }
+  show(){
+    this.element.style.display = this.originalDisplay
+  }
 }

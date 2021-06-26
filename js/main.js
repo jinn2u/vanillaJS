@@ -1,6 +1,7 @@
-import Store from './Store.js'
-import storage from './Storage.js'
-import Controller from './Controller.js'
+import Store from './models/Store.js'
+import storage from './models/datas/Storage.js'
+import Controller from './controller/Controller.js'
+import SearchFormView from './views/SearchFormView.js'
 
 const tag = "[main]"
 
@@ -12,7 +13,8 @@ function main(){
   const store = new Store(storage)
 
   const views = {
+    searchFormView: new SearchFormView() 
   }
 
-  new Controller(store)
+  new Controller(store, views)
 }
