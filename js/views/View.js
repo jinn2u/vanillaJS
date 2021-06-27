@@ -1,3 +1,4 @@
+import {emit, on} from "../utils/helper.js"
 const tag = "[View]"
 
 export default class View{
@@ -13,5 +14,14 @@ export default class View{
   }
   show(){
     this.element.style.display = this.originalDisplay
+    return this
+  }
+  on(eventName, handler){
+    on(this.element, eventName, handler)
+    return this
+  }
+  emit(eventName, data){
+    emit(this.element, eventName, data)
+    return this
   }
 }

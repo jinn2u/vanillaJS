@@ -13,3 +13,7 @@ export function on(target, eventName, handler){
   if(!target) throw "no selector"
   target.addEventListener(eventName, handler)
 }
+export function emit(target, eventName, detail){
+  const event = new CustomEvent(eventName, {detail})
+  target.dispatchEvent(event)
+}

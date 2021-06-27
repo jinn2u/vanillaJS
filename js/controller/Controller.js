@@ -5,6 +5,14 @@ export default class Controller{
     console.log(tag, "constructor")
 
     this.store = store
-    this.seaerchFormView = searchFormView
+    this.searchFormView = searchFormView
+
+    this.subscribeViewEvents()
+  }
+  subscribeViewEvents(){
+    this.searchFormView.on("@submit", event => this.search(event))
+  }
+  search(event){
+    console.log(tag, event, event.detail)
   }
 }
