@@ -20,7 +20,7 @@ export default class SearchFormView extends View{
     on(this.resetElement, "click", () => this.handleReset())
   } 
   handleKeyup(){
-    // console.log(tag, 'handleKeyup', this.inputElement.value )
+    console.log(tag, 'handleKeyup', this.inputElement.value )
     const {value} = this.inputElement
     this.showResetButton(value.length>0)
     if(value.length===0){
@@ -29,8 +29,8 @@ export default class SearchFormView extends View{
   }
   handleSubmit(event){
     event.preventDefault()
-    console.log(tag, "handleSubmit")
     const {value} = this.inputElement
+    console.log(tag, "handleSubmit", value)
     this.emit("@submit", {value}) 
   } 
   handleReset(){

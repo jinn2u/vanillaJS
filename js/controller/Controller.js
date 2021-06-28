@@ -1,11 +1,13 @@
 const tag = "[Controller]"
 
 export default class Controller{
-  constructor(store,  {searchFormView}){
+  constructor(store,  {searchFormView, searchResultView}){
     console.log(tag, "constructor")
 
     this.store = store
     this.searchFormView = searchFormView
+    this.searchResultView = searchResultView
+
 
     this.subscribeViewEvents()
   }
@@ -14,10 +16,19 @@ export default class Controller{
       .on("@submit", event => this.search(event.detail.value))
       .on("@reset", ()=>this.reset())
   }
-  search(event){
-    console.log(tag, event, event.detail)
+  search(searchKeyword){
+    console.log(tag, "search", searchKeyword)
+    this.store.search(searchKeyword)
+    this.render()
   }
   reset(){
-    console.log(tag, "reset")
+
+  }
+  render(){
+    if(this.store.searchKeyword.length > 0){
+      this.searchResultView.show(this.store.searchResult)
+    }else{
+      this.searchResultView.hide()
+    }
   }
 }
