@@ -9,7 +9,6 @@ export  const TabType = {
 const TabLabel = {
   [TabType.KEYWORD]: '추천검색어',
   [TabType.HISTORY]: '최근 검색어'
-
 }
 
 export default class TabView extends View{
