@@ -30,11 +30,13 @@ export default class Controller{
   }
   render(){
     if(this.store.searchKeyword.length > 0){
-      this.searchResultView.show(this.store.searchResult)
-      this.tabView.hide()
-    }else{
+      return this.renderSearchResult
+    }
       this.searchResultView.hide()
-      this.tabView.show()
-    } 
+      this.tabView.show(this.store.selectedTab)
+  }
+  renderSearchResult(){
+    this.searchResultView.show(this.store.searchResult)
+    this.tabView.hide()
   }
 }

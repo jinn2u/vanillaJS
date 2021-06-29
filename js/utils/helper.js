@@ -9,6 +9,9 @@ export function qs(selector, scope=document){
   if(!selector) throw "no selector"
   return scope.querySelector(selector)
 }
+export function qsAll(selector, scope=document){
+  return scope.querySelectorAll(selector)
+}
 export function on(target, eventName, handler){
   if(!target) throw "no selector"
   target.addEventListener(eventName, handler)
