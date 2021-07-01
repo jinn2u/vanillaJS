@@ -16,4 +16,7 @@ export default class Store{
     this.searchKeyword = keyword
     this.searchResult = this.storage.productData.filter(product => product.name.includes(keyword))
   } 
+  getKeywordList(){
+    return this.storage.keywordData
+  }
 }
