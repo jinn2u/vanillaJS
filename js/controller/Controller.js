@@ -27,6 +27,7 @@ export default class Controller{
       .on("@click", event=> this.search(event.detail.value))
     this.historyListView
       .on("@click", event=> this.search(event.detail.value))
+      .on("@remove", event => this.removeHistory(event.detail.value))
   }
   search(searchKeyword){
     // console.log(tag, "search", searchKeyword)
@@ -44,6 +45,10 @@ export default class Controller{
   changeTab(tab){
     // console.log(tab, tag)
     this.store.selectedTab = tab
+    this.render()
+  }
+  removeHistory(keyword){
+    this.store.removeHistory(keyword)
     this.render()
   }
   render(){
