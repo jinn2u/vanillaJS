@@ -4,7 +4,7 @@ const tag = "[Controller]"
 
 export default class Controller{
   constructor(store,  {searchFormView, searchResultView, tabView, keywordListView}){
-    console.log(tag, "constructor")
+    // console.log(tag, "constructor")
 
     this. store = store
     this.searchFormView = searchFormView
@@ -26,7 +26,7 @@ export default class Controller{
       .on("@click", event=> this.search(event.detail.value))
   }
   search(searchKeyword){
-    console.log(tag, "search", searchKeyword)
+    // console.log(tag, "search", searchKeyword)
 
     this.store.search(searchKeyword)
 
@@ -40,7 +40,7 @@ export default class Controller{
   }
   changeTab(tab){
     console.log(tab, tag)
-    this.store.selectedTab = tab
+    // this.store.selectedTab = tab
     this.render()
   }
   render(){
@@ -58,9 +58,10 @@ export default class Controller{
     this.searchResultView.hide()
   }
   renderSearchResult(){
+    this.searchFormView.show(this.store.searchKeyword)
     this.tabView.hide()
     this.keywordListView.hide()
-    return this.searchResultView.show(this.store.searchResult)
+    this.searchResultView.show(this.store.searchResult)
   }
 
 }

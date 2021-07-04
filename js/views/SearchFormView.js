@@ -6,6 +6,7 @@ const tag = "[SearchFormView]"
 export default class SearchFormView extends View{
   constructor(){
     // console.log(tag, "constructor")
+
     super(qs("#search-form-view"))
     this.inputElement = qs("[type=text]", this.element)
     this.resetElement = qs("[type=reset]", this.element)
@@ -37,5 +38,10 @@ export default class SearchFormView extends View{
   handleReset(){
     // console.log(tag, "handleReset")
     this.emit("@reset")
+  }
+  show(value = ""){
+    this.inputElement.value = value
+    this.showResetButton(this.inputElement.value.length > 0)
+    super.show()
   }
 }

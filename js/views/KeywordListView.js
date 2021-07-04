@@ -19,7 +19,7 @@ export default class KeywordListView extends View{
     delegate(this.element, "click", "li", event=> this.handleClick(event))
   }
   handleClick(event){
-    console.log(tag,"handleClick", event.target.dataset.keyword )
+    // console.log(tag,"handleClick", event.target.dataset.keyword )
 
     const value = event.target.dataset.keyword
     this.emit("@click", {value})
