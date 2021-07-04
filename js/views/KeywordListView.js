@@ -4,9 +4,9 @@ import {delegate, qs} from "../utils/helper.js"
 const tag = "[KeywordListView]"
 
 export default class KeywordListView extends View{
-  constructor(){
-    super(qs(`#keyword-list-view`))
-    this.template =  new Template()
+  constructor(element = qs("#keyword-list-view"),template = new Template()){
+    super(element)
+    this.template = template
     this.bindEvents()
   }
   show(data=[]){

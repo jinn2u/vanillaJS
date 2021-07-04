@@ -7,8 +7,8 @@ const storage = {
   ],
   historyData: [
     {id: 1, keyword: "검색기록1", date: createPastDate(3)},
-    {id: 2, keyword: "검색기록2", date: createPastDate(2)},
-    {id: 3, keyword: "검색기록3", date: createPastDate(1)},
+    {id: 2, keyword: "샐러드", date: createPastDate(2)},
+    {id: 3, keyword: "피자", date: createPastDate(1)},
   ],
   productData: [
     {
