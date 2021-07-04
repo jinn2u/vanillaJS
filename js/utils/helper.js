@@ -49,3 +49,6 @@ export function formatRelativeDate(date = new Date()) {
     dateStyle: "medium",
   });
 }
+export function createNextId(list = []) {
+  return Math.max(...list.map((item) => item.id)) + 1;
+}

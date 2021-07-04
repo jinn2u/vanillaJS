@@ -33,6 +33,7 @@ export default class SearchFormView extends View{
     event.preventDefault()
     const {value} = this.inputElement
     // console.log(tag, "handleSubmit", value)
+
     this.emit("@submit", {value}) 
   } 
   handleReset(){

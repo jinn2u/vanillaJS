@@ -30,10 +30,8 @@ export default class Controller{
       .on("@remove", event => this.removeHistory(event.detail.value))
   }
   search(searchKeyword){
-    // console.log(tag, "search", searchKeyword)
-
-    this.store.search(searchKeyword)
-
+    console.log(tag, "search", searchKeyword)
+    this.store.search(searchKeyword)    
     this.render()
   }
   reset(){
