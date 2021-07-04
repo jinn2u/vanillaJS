@@ -22,10 +22,14 @@ export default class Controller{
 
     this.tabView
       .on("@change", event => this.changeTab(event.detail.value))
+    this.keywordListView
+      .on("@click", event=> this.search(event.detail.value))
   }
   search(searchKeyword){
-    // console.log(tag, "search", searchKeyword)
+    console.log(tag, "search", searchKeyword)
+
     this.store.search(searchKeyword)
+
     this.render()
   }
   reset(){
@@ -41,8 +45,7 @@ export default class Controller{
   }
   render(){
     if (this.store.searchKeyword.length > 0){
-
-      return this.renderSearchResult
+      return this.renderSearchResult()
     }
     else if (this.store.selectedTab === TabType.KEYWORD){
       this.keywordListView.show(this.store.getKeywordList())
@@ -55,10 +58,9 @@ export default class Controller{
     this.searchResultView.hide()
   }
   renderSearchResult(){
-    this.searchResultView.show(this.store.searchResult)
-
     this.tabView.hide()
     this.keywordListView.hide()
+    return this.searchResultView.show(this.store.searchResult)
   }
 
 }
