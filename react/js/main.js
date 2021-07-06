@@ -2,18 +2,18 @@ class App extends React.Component {
   constructor(){
     super()
     this.state = {
-      searchKeyword: "hello"
+      searchKeyword: ""
     }
   }
   handleChangeInput(event){
     this.state.searchKeyword = event.target.value
     this.forceUpdate()
     this.setState({
-      searchKeyword: event.target.value
+      searchKeyword: event.target.value 
     })
   }
   render() {
-    return (
+    return (    
       <>
         <header>
           <h2 className="container">검색</h2>
@@ -27,7 +27,9 @@ class App extends React.Component {
               value={this.state.searchKeyword}
               onChange={event => this.handleChangeInput(event)}
             />
-            <button type="reset" className="btn-reset"></button>
+            {this.state.searchKeyword && 
+              <button type="reset" className="btn-reset"></button>
+            }
           </form>
         </div>
       </>
