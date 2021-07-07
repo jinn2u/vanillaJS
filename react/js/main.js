@@ -13,14 +13,15 @@ class App extends React.Component {
     this.state = {
       searchKeyword: "",
       searchResult: [],
-      submitted: false
+      submitted: false,
+      selectedTab: TabType.KEYWORD
     }
   }
   handleChangeInput(event) {
     const searchKeyword = event.target.value
-    if (searchKeyword.length<=0 && this.state.submitted){
+    if (searchKeyword.length <= 0 && this.state.submitted) {
       this.handleReset()
-    } 
+    }
     this.setState({ searchKeyword })
     // console.log(searchKeyword)
   }
@@ -40,7 +41,7 @@ class App extends React.Component {
     // console.log("handleReset", this.state.searchKeyword)
 
     this.setState(() => {
-      return { searchKeyword: "", submitted:false}
+      return { searchKeyword: "", submitted: false }
     }, () => {
       console.log("handleReset", this.state.searchKeyword)
     })
@@ -83,18 +84,33 @@ class App extends React.Component {
       )
     )
     const tabs = (
-      <ul className="tabs">
-        {Object.values(TabType).map(tabType => {
-          return <li key={tabType}>{TabLabel[tabType]}</li> 
-        })}
-      </ul>
+      <>
+        <ul className="tabs">
+          {Object.values(TabType).map(tabType => {
+            return (
+              <li
+                className = {this.state.selectedTab ===tabType ? "active" : ""}
+                key={tabType}
+                onClick = {()=>this.setState({selectedTab: tabType})}
+              >
+                {TabLabel[tabType]}</li>
+            )
+          })}
+        </ul>
+        {this.state.selectedTab === TabType.KEYWORD && <>TODO: 추천 검색어</>}
+        {this.state.selectedTab === TabType.HISTORY && <>TODO: 최근 검색어</>}
+      </>
     )
+      
+     
+
+
     return (
       <>
         <header>
           <h2 className="container">검색</h2>
         </header>
-        
+
         <div className="container">
           {searchForm}
           <div className="content">
