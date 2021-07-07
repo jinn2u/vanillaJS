@@ -21,6 +21,9 @@ class Store{
     if(history1.date > history2.date) return -1
     else return 1
   }
+  removeHistory(keyword){
+    this.#storage.historyData = this.#storage.historyData.filter(item => item.keyword !== keyword)
+  }
 }
 const store = new Store(storage)
 

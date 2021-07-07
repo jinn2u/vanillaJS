@@ -55,6 +55,11 @@ class App extends React.Component {
       console.log("handleReset", this.state.searchKeyword)
     })
   }
+  handleClickRemoveHistory(event, keyword){
+    event.stopPropagation()
+    store.removeHistory(keyword)
+    this.setState({historyList: store.getHistoryList()})
+  }
   render() {
     const searchForm = (
       <form
@@ -111,6 +116,7 @@ class App extends React.Component {
             <li key={id} onClick = {()=>this.search(keyword)}>
               <span>{keyword}</span>
               <span className="date">{formatRelativeDate(date)}</span>
+              <button className="btn-remove" onClick={(event) => this.handleClickRemoveHistory(event,keyword)} />
             </li>
           )
         })}
@@ -134,10 +140,6 @@ class App extends React.Component {
         {this.state.selectedTab === TabType.HISTORY && historyList}
       </>
     )
-
-     
-
-
     return (
       <>
         <header>
