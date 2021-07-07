@@ -11,7 +11,9 @@ class App extends React.Component {
   }
   handleChangeInput(event) {
     const searchKeyword = event.target.value
-    if (!searchKeyword) this.handleReset()
+    if (searchKeyword.length<=0 && this.state.submitted){
+      this.handleReset()
+    } 
     this.setState({ searchKeyword })
     // console.log(searchKeyword)
   }
@@ -27,11 +29,11 @@ class App extends React.Component {
     })
   }
   handleReset() {
-    this.setState({ searchKeyword: "" })
-    console.log("handleReset", this.state.searchKeyword)
+    // this.setState({ searchKeyword: "" })
+    // console.log("handleReset", this.state.searchKeyword)
 
     this.setState(() => {
-      return { searchKeyword: "" }
+      return { searchKeyword: "", submitted:false}
     }, () => {
       console.log("handleReset", this.state.searchKeyword)
     })
@@ -78,8 +80,9 @@ class App extends React.Component {
         <header>
           <h2 className="container">검색</h2>
         </header>
+        
         <div className="container">
-
+          {searchForm}
           <div className="content">
             {this.state.submitted && searchResult}
           </div>
