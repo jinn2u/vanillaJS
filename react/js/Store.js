@@ -14,6 +14,13 @@ class Store{
   getKeywordList(){
      return this.#storage.keywordData
   }
+  getHistoryList(){
+    return this.#storage.historyData.sort(this._sortHistory)
+  }
+  _sortHistory(history1, history2 ){
+    if(history1.date > history2.date) return -1
+    else return 1
+  }
 }
 const store = new Store(storage)
 
