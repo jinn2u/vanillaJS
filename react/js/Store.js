@@ -3,13 +3,13 @@ import {createNextId} from "../js/helper.js"
 const tag = "[Store]"
 
 class Store{
+  #storage
   constructor(storage){
     if(!storage) throw "no storage"
-    // console.log(tag, "constructor")
-    this.storage = storage
+    this.#storage = storage
   }
   search(keyword){
-    return this.searchResult = this.storage.productData.filter(product => product.name.includes(keyword))
+    return this.searchResult = this.#storage.productData.filter(product => product.name.includes(keyword))
   } 
   getKeywordList(){
     return this.storage.keywordData
@@ -37,6 +37,7 @@ class Store{
     this.storage.historyData.push({id, keyword, date})
     this.storage.historyData.sort(this._sortHistory)
   }
+
 }
 const store = new Store(storage)
 
