@@ -1,52 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  </head>
-  <body>
-    <div id="app">
-    <script>
-      class Component {
-        $target
-        $state
-        constructor($target){
-          this.$target = $target
-          this.setup()
-          this.render()
-        }
-        setup(){}
-        temmplate(){return ''}
-        render(){
-          this.$target.innerHTML = this.template()
-          this.setEvent()
-        }
-        setEvent(){}
-        setState(newState){
-          console.log(newState, 'sib')
-          this.$state = {...this.$state, ...newState}
-          this.render()
-        }
-      }
-      class App extends Component{
-        setup(){
-          this.$state = {items:['item1', 'item2']}
-        }
-        template(){
-          const {items} = this.$state
-          return `
-            <ul>
-              ${items.map(item=> `<li>${item}</li>`).join('')}
-            </ul>
-            <button>추가</button>
-          `
-        }
-        setEvent(){
-          this.$target.querySelector('button').addEventListener('click', ()=> {
-            const {items} = this.$state
-            this.setState({items: [...items, `item${items.length+1}`]})
-          })
-        }
-      }
-      new App(document.querySelector('#app'))
-    </script>
-  </body>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Component 2</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="./src/app.js" type="module"></script>
+</body>
 </html>
