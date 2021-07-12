@@ -1,5 +1,5 @@
-const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const path = require("path")
+const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 
 module.exports = {
   mode: "development",
@@ -7,6 +7,9 @@ module.exports = {
     main: "./src/main.js",
   },
   devtool: "inline-source-map",
+  devServer: {
+    contentBase: "./",
+  },
   module: {
     rules: [
       {
@@ -19,4 +22,4 @@ module.exports = {
     ],
   },
   plugins: [new CleanWebpackPlugin()],
-};
+}
