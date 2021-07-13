@@ -40,3 +40,35 @@ button:hover {
 .btn-remove::before {
   content: 'X'
 }
+
+.content {
+  border: 1px solid #ccc;
+}
+.empty-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: grey;
+}
+.result li {
+  display: flex;
+  margin-bottom: 16px;
+  height: 80px;
+
+}
+
+.result li:last-child {
+  margin-bottom: 0;
+}
+
+.result img {
+  width: 100px;
+  object-fit: cover;
+}
+
+.result p {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
