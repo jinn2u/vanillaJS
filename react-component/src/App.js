@@ -3,6 +3,7 @@ import Header from "./components/Header.js"
 import SearchForm from "./components/SearchForm.js"
 import SearchResult from "./components/searchResult.js"
 import store from "./Store.js"
+import Tabs, {TabType} from "./components/Tab.js"
 
 export default class App extends React.Component {
   constructor(){
@@ -11,6 +12,7 @@ export default class App extends React.Component {
       searchKeyword: "",
       searchResult: [],
       submitted: false,
+      selectedTab: TabType.KEYWORD
     }
   }
   search(){
@@ -36,7 +38,7 @@ export default class App extends React.Component {
     this.setState({searchKeyword})
   }
   render() {
-    const {searchKeyword, submitted, searchResult} = this.state
+    const {searchKeyword, submitted, searchResult, selectedTab} = this.state
     return (
       <>
         <Header title="검색" />
@@ -49,7 +51,18 @@ export default class App extends React.Component {
           />
         </div>
         <div className="content">
-          {submitted && <SearchResult data={searchResult} />}
+          {submitted ? (
+            <SearchResult data={searchResult} />
+          ): (
+            <>
+              <Tabs 
+                selectedTab={selectedTab} 
+                onChange={(selectedTab) => this.setState({selectedTab})} 
+              />
+              {selectedTab === TabType.KEYWORD && <>TODO: 추천 검색어 목록</>}
+              {selectedTab === TabType.HISTORY && <>TODO: 최근 검색어 목록</>}
+            </>
+          )}
         </div>
       </>
     )

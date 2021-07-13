@@ -1,5 +1,6 @@
 import store from "../js/Store.js"
 import { formatRelativeDate } from "../js/helper.js"
+
 const TabType = {
   KEYWORD: "KEYWORD",
   HISTORY: "HISTORY"
@@ -8,6 +9,7 @@ const TabLabel = {
   [TabType.KEYWORD]: '추천검색어',
   [TabType.HISTORY]: '최근 검색어'
 }
+
 class App extends React.Component {
   constructor() {
     super()
@@ -18,6 +20,7 @@ class App extends React.Component {
       selectedTab: TabType.KEYWORD,
       keywordList: [],
       historyList: [],
+      selectedTab: TabType.KEYWORD
     }
   }
   componentDidMount(){
