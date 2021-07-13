@@ -13,17 +13,13 @@ export default class KeywordList extends React.Component {
     const keywordList = store.getKeywordList()
     this.setState({keywordList})
   }
-
   render() {
     return (
-      <List data={this.state.keywordList} onClick={this.props.onClick} renderItem={(item, idx) => {
-        return (
-          <>
-            <span className="number">{idx + 1}</span>
-            <span>{item.keyword}</span>
-          </>
-        )
-      }} />
+      <List 
+        data={this.state.keywordList} 
+        onClick={this.props.onClick} 
+        hasIndex
+      />
     )
   }
 }
